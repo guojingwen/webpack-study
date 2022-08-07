@@ -1,0 +1,8 @@
+.content {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+    display: flex;
+    color: red;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9jc3Mvc3RhcnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0kseUJBQWlCO09BQWpCLHNCQUFpQjtZQUFqQixpQkFBaUI7SUFDakIsYUFBYTtJQUNiLFVBQVU7QUFDZCIsImZpbGUiOiJlbmQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRlbnQge1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgY29sb3I6IHJlZDtcbn0iXX0= */

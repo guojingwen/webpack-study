@@ -1,0 +1,5 @@
+.content {
+    user-select: none;
+    display: flex;
+    color: red;
+}

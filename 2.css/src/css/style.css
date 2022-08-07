@@ -1,0 +1,5 @@
+@import "./test.less";
+
+.content {
+    color: red;
+}
