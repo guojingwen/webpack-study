@@ -1,0 +1,8 @@
+.big-img {
+    background-image: url("../img/295.png");
+    background-size: contain;
+    height: 200px;
+    width: 200px;
+    display: inline-block;
+    background-color: red;
+}
