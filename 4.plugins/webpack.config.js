@@ -1,5 +1,6 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
@@ -7,7 +8,8 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, './dist')
+        path: path.resolve(__dirname, './dist'),
+        // assetModuleFilename: 'img/[name].[chunkhash:6][ext]',
     },
     module: {
         rules: [
@@ -22,8 +24,8 @@ module.exports = {
                 test: /\.(je?pg|png|gif)$/i,
                 type: 'asset',
                 generator: {
-                  filename: '[name].[hash:6][ext]',
-                  outputPath: 'img'
+                  filename: 'img/[name].[hash:6][ext]',
+                //   outputPath: 'img'
                 },
                 parser: {
                   dataUrlCondition: {
@@ -35,13 +37,17 @@ module.exports = {
                 test: /\.ttf|eot|woff2?$/i,
                 type: "asset/resource",
                 generator: {
-                  filename: "[name].[hash:6][ext]",
-                  outputPath: 'font'
+                  filename: "font/[name].[hash:6][ext]",
+                //   outputPath: 'font'
                 }
             }
         ]
     },
     plugins: [
         new CleanWebpackPlugin(),
+        // 1. 如果不配置template选项会使用该插件默认的模版
+        new HtmlWebpackPlugin({
+            title: 'webpack html 模版'
+        }),
     ]
 }

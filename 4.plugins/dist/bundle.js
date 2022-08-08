@@ -522,25 +522,25 @@ module.exports = function (url, options) {
 /* 12 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "iconfont.54752c.eot";
+module.exports = __webpack_require__.p + "font/iconfont.54752c.eot";
 
 /***/ }),
 /* 13 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "iconfont.c79391.woff2";
+module.exports = __webpack_require__.p + "font/iconfont.c79391.woff2";
 
 /***/ }),
 /* 14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "iconfont.9a10d9.woff";
+module.exports = __webpack_require__.p + "font/iconfont.9a10d9.woff";
 
 /***/ }),
 /* 15 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "iconfont.c1191d.ttf";
+module.exports = __webpack_require__.p + "font/iconfont.c1191d.ttf";
 
 /***/ }),
 /* 16 */
@@ -623,7 +623,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".big-img {\n    background-image: url(
 /* 18 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "295.7fbcbf.png";
+module.exports = __webpack_require__.p + "img/295.7fbcbf.png";
 
 /***/ }),
 /* 19 */
