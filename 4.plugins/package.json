@@ -18,5 +18,8 @@
   },
   "keywords": [],
   "author": "dashu",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "copy-webpack-plugin": "^11.0.0"
+  }
 }

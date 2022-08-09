@@ -1,11 +1,13 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { DefinePlugin } = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
     mode: 'none',
-    entry: "./src/index.js",
+    entry: ["./src/index.js", "./src/define-plugin.js"],
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, './dist'),
@@ -45,9 +47,31 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        // 1. 如果不配置template选项会使用该插件默认的模版
+        // 1. 如果不配置template选项会使用该插件默认的模版 default_index.ejs
+        // new HtmlWebpackPlugin({
+        //     title: 'webpack html 模版',
+        // }),
         new HtmlWebpackPlugin({
-            title: 'webpack html 模版'
+            title: 'webpack html 模版',
+            template: './public/index.html'
         }),
+        new DefinePlugin({
+            BASE_URL: JSON.stringify('./'),
+            ENV: JSON.stringify('development')
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: 'public',
+                    globOptions: {
+                        ignore: [
+                            "**/.DS_Store",
+                            "**/index.html"
+                        ]
+                    }
+
+                }
+            ]
+        })
     ]
 }

@@ -9,6 +9,7 @@ import "./css/index.css";
 import smallImageUrl from './img/38.jpg'
 const smallImage = new Image();
 smallImage.src = smallImageUrl;
+smallImage.setAttribute('style', "width: 200px;")
 document.body.appendChild(smallImage);
 
 const bigImage = document.createElement('div');
