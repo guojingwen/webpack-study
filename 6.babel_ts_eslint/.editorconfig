@@ -1,16 +1,22 @@
-root = true                         # 根目录的配置文件，编辑器会由当前目录向上查找，如果找到 `roor = true` 的文件，则不再查找
+# https://editorconfig.org
+
+# 已经是顶层配置文件，不必继续向上搜索
+root = true
 
 [*]
-indent_style = space                # 空格缩进,可选"space"、"tab"
-indent_size = 2                     # 缩进空格为4个
-end_of_line = lf                    # 结尾换行符，可选"lf"、"cr"、"crlf"
-charset = utf-8                     # 文件编码是 utf-8
-trim_trailing_whitespace = true     # 不保留行末的空格
-insert_final_newline = true         # 文件末尾添加一个空行
-curly_bracket_next_line = false     # 大括号不另起一行
-spaces_around_operators = true      # 运算符两遍都有空格
-indent_brace_style = 1tbs           # 条件语句格式是 1tbs
-quote_type = single                 # 字符串使用单引号
+# 编码字符集
+charset = utf-8
+# 缩进风格是空格
+indent_style = space
+# 一个缩进占用两个空格，因没有设置tab_with，一个Tab占用2列
+indent_size = 2
+# 换行符 lf
+end_of_line = lf
+# 文件以一个空白行结尾
+insert_final_newline = true
+# 去除行首的任意空白字符
+trim_trailing_whitespace = false
 
-[*.{html,less,css,json}]            # 对所有 html, less, css, json 文件生效
-quote_type = double                 # 字符串使用双引号
+[*.md]
+insert_final_newline = false
+trim_trailing_whitespace = false

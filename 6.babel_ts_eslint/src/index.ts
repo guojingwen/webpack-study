@@ -1,9 +1,9 @@
+import './css/index.css';
+import createComp from './js/comp';
+import './js/resources';
+
 const texts: Array<string> = ['hello', 'webpack'];
+const comp = createComp('h2', { class: 'content' }, texts.at(-1));
+document.body.appendChild(comp);
 
-const h2 = document.createElement('h2');
-h2.innerText = texts.at(-1)!;
-
-const ele = document.getElementById('app');
-ele?.appendChild(h2);
-
-console.log(texts.join(' ') + 23);
+console.log(texts.join(' '));
