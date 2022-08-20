@@ -4,18 +4,49 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 const path = require('path');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
   mode: 'none',
   devtool: 'cheap-module-source-map',
   devServer: {
-    // contentBase: './build',
-    port: 9081
+    // webpack-dev-server v4 相对于v3发生很大改变
+    // https://github.com/webpack/webpack-dev-server/blob/master/migration-v4.md
+    port: 9081,
+    hot: false, // false true 'only'
+    // hotOnly: true, // v4 请使用 hot: 'only'
+    devMiddleware: {
+      // publicPath: '/abc',
+    },
+    // contentBase 已废弃， 请使用 static.directory
+    static: {
+      directory: path.join(__dirname, 'lib'),
+    },
+    host: '127.0.0.1',
+    compress: false,
+    historyApiFallback: true,
+    // historyApiFallback: {
+    //   rewrites: [
+    //     {from: /abc/, to: "/index.html"}
+    //   ]
+    // }
+    proxy: {
+      // "/api": "http://localhost:8080",
+      "/api": {
+        target: "http://localhost:8080",
+        pathRewrite: {
+          "^/api": ""
+        },
+      }
+    }
   },
   entry: './src/index.ts',
+  // entry: './src/react-router-index.jsx',
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, './dist'),
+    // publicPath: '/abc'
   },
   resolve: {
     extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx', '.ts', '.vue'],
@@ -40,7 +71,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.ts$/,
+        test: /\.(js|ts|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
       },
@@ -66,6 +97,10 @@ module.exports = {
           filename: 'font/[name].[hash:6][ext]',
         },
       },
+      {
+        test: /\.vue$/,
+        use: 'vue-loader'
+      }
     ],
   },
   plugins: [
@@ -87,8 +122,11 @@ module.exports = {
     }),
     new DefinePlugin({
       BASE_URL: JSON.stringify('./'),
-      // 'process.node.ENV'
+      'process.env.NODE_ENV': JSON.stringify('development'),
     }),
+
+    new VueLoaderPlugin(),
+    new ReactRefreshPlugin(),
   ],
 };
 /* eslint-enable */

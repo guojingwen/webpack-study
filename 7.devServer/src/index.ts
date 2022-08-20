@@ -1,3 +1,7 @@
+// import './js/loadVue';
+// import './js/loadReact';
+
+import './js/ajaxCors';
 import './css/index.css';
 import createComp from './js/comp';
 import '@/js/resources';
