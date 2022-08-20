@@ -8,7 +8,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
-  mode: 'none',
+  mode: 'development',
   devtool: 'cheap-module-source-map',
   devServer: {
     // webpack-dev-server v4 相对于v3发生很大改变

@@ -1,5 +1,5 @@
 // import './js/loadVue';
-// import './js/loadReact';
+import './js/loadReact';
 
 import './js/ajaxCors';
 import './css/index.css';

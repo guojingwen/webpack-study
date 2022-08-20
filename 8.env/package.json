@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
     "type-check": "tsc --noEmit",
     "type-check-watch": "tsc --noEmit --watch",
-    "server": "webpack-dev-server"
+    "build": "webpack --config ./config/webpack.common.js --env production",
+    "serve": "webpack serve --config ./config/webpack.common.js --env development"
   },
   "keywords": [],
   "author": "dashu",

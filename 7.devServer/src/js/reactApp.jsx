@@ -5,7 +5,7 @@ export default class ReactApp extends Component {
   constructor() {
     super();
     this.state = {
-      message: 'Hello React-',
+      message: 'Hello React',
     };
   }
   render() {
