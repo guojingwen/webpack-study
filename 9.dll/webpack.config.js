@@ -10,11 +10,11 @@ const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
 
 function getCommonConfig(isProduction) {
   const plugins = [
-    // new HtmlWebpackPlugin({
-    //   template: './index.html',
-    //   title: 'webpackp 环境分离',
-    //   versionInfo: new Date().toLocaleString(),
-    // }),
+    new HtmlWebpackPlugin({
+      template: './index.html',
+      title: 'webpackp 环境分离',
+      versionInfo: new Date().toLocaleString(),
+    }),
     new DefinePlugin({
       BASE_URL: JSON.stringify('./'),
       'process.env.NODE_ENV': JSON.stringify(isProduction ? "production": "development"),
@@ -24,6 +24,7 @@ function getCommonConfig(isProduction) {
       manifest: path.join(__dirname, "./dll/react.manifest.json")
     }),
     new AddAssetHtmlPlugin({
+      publicPath: './',
       filepath: path.join(__dirname, './dll/dll_react.js')
     })
     // new HardSourceWebpackPlugin(),
