@@ -1,0 +1,5 @@
+.vue-comp{border:1px dotted blue;padding:20px;text-align:center;display:flex;flex-direction:column}
+.react-app{background-color:red;padding:20px;color:#fff;font-size:40px}
+.content{border:10px solid red;background-color:#fee;font-size:30px}
+@font-face{font-family:"iconfont";src:url(../font/iconfont.54752c.eot);src:url(../font/iconfont.54752c.eot#iefix) format("embedded-opentype"),url(../font/iconfont.c79391.woff2) format("woff2"),url(../font/iconfont.9a10d9.woff) format("woff"),url(../font/iconfont.c1191d.ttf) format("truetype")}.iconfont{font-family:"iconfont" !important}.iconfont{font-size:16px;font-style:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.icon-ashbin:before{content:""}.icon-caps-lock:before{content:""}
+.big-img{background-image:url(../img/295.7fbcbf.png);background-size:contain;height:200px;width:200px;display:inline-block;background-color:rgba(18,52,86,.4705882353);margin:0 20px}body>img{height:200px;width:200px}.icon-ashbin{font-size:40px}

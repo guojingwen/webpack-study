@@ -6,9 +6,28 @@ const resolveApp = require('./paths');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {DefinePlugin} = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const MiniCssExtrctPlugin = require('mini-css-extract-plugin');
 
 
 function getCommonConfig(isProduction) {
+  const plugins = [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      title: 'webpackp 环境分离',
+      versionInfo: new Date().toLocaleString(),
+    }),
+    new DefinePlugin({
+      BASE_URL: JSON.stringify('./'),
+      'process.env.NODE_ENV': JSON.stringify(isProduction ? "production": "development"),
+    }),
+    new VueLoaderPlugin(),
+  ];
+  if(isProduction) {
+    plugins.push(new MiniCssExtrctPlugin({
+      filename: "css/[name].[hash:8].css",
+      // chunkFilename: "css/[name].[hash:8].css",
+    }))
+  }
   return {
     entry: './src/index.ts',
     output: {
@@ -26,7 +45,7 @@ function getCommonConfig(isProduction) {
         {
           test: /\.s?css/,
           use: [
-            'style-loader',
+            isProduction? MiniCssExtrctPlugin.loader : 'style-loader',
             {
               loader: 'css-loader',
               options: {
@@ -67,18 +86,7 @@ function getCommonConfig(isProduction) {
         }
       ],
     },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: './public/index.html',
-        title: 'webpackp 环境分离',
-        versionInfo: new Date().toLocaleString(),
-      }),
-      new DefinePlugin({
-        BASE_URL: JSON.stringify('./'),
-        'process.env.NODE_ENV': JSON.stringify(isProduction ? "production": "development"),
-      }),
-      new VueLoaderPlugin(),
-    ]
+    plugins
   }
 }
 

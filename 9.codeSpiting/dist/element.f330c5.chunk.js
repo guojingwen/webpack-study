@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_9_codeSpiting=self.webpackChunk_9_codeSpiting||[]).push([["element"],{6800:(e,n,t)=>{t.r(n),t.d(n,{default:()=>l});const c=document.createElement("div");c.innerHTML="Hello Element";const l=c}}]);
