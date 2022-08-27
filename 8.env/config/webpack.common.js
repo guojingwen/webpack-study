@@ -4,7 +4,7 @@ const devConfig = require('./webpack.dev');
 const prodConfig = require('./webpack.prod');
 const resolveApp = require('./paths');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {DefinePlugin} = require('webpack');
+const {DefinePlugin, ProvidePlugin} = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtrctPlugin = require('mini-css-extract-plugin');
 
@@ -21,6 +21,11 @@ function getCommonConfig(isProduction) {
       'process.env.NODE_ENV': JSON.stringify(isProduction ? "production": "development"),
     }),
     new VueLoaderPlugin(),
+    // 当在代码中遇到某一个变量找不到时, 我们会通过ProvidePlugin, 自动导入对应的库
+    new ProvidePlugin({
+      axios: "axios",
+      get: ["axios", "get"]
+    })
   ];
   if(isProduction) {
     plugins.push(new MiniCssExtrctPlugin({
