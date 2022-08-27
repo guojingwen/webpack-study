@@ -2,6 +2,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CSSMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+
+const isProduction = true;
 
 module.exports = {
     mode: 'none',
@@ -10,6 +15,17 @@ module.exports = {
     output: {
         path: path.join(__dirname, './dist'),
         filename: '[name].[contenthash:6].js',
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/i,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader'
+          ]
+        }
+      ]
     },
     optimization: {
         minimize: true,
@@ -34,9 +50,51 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
+        // new HtmlWebpackPlugin({
+        //     template: './index.html',
+        //     title: 'webpack 代码压缩',
+        // }),
         new HtmlWebpackPlugin({
-            template: './index.html',
-            title: 'webpack 代码分割 runtime',
+          template: "./index.html",
+          title: 'webpack 代码压缩',
+          // inject: "body"
+          cache: true, // 当文件没有发生任何改变时, 直接使用之前的缓存
+          minify: isProduction ? {
+            removeComments: true, // 是否要移除html中注释
+            // 是否移除多余的属性
+            // <input type="text">   type 默认值就是 text  --> <input>
+            removeRedundantAttributes: true,
+            // 是否移除一些空属性
+            removeEmptyAttributes: true,
+            // 移除空格
+            collapseWhitespace: false,
+            // 移除style标签中的多余属性
+            // <link rel="stylesheet" type="text/css" href="" /> -> <link rel="stylesheet" href="" />
+            removeStyleLinkTypeAttributes: true,
+            // 压缩css
+            minifyCSS: true,
+            // 压缩js
+            // minifyJS: true,
+            minifyJS: {
+              mangle: { // 这里的配置同 terser-webpack-plugin
+                toplevel: false
+              }
+            }
+          }: false
         }),
+        new MiniCssExtractPlugin({
+          filename: "css/[name].[hash:8].css",
+        }),
+        new CSSMinimizerPlugin({
+          parallel: true,
+        }),
+        new CompressionWebpackPlugin({
+          test: /\.(css|js)$/, // 匹配哪些文件需要压缩
+          threshold: 500, // 设置文件从多大开始压缩
+          minRatio: 0.7, // 至少的压缩比例
+          algorithm: 'gzip', // 采用的压缩算法
+          // include: 
+          // exclude:
+        })
     ]
   }

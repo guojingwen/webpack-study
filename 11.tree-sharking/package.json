@@ -1,5 +1,5 @@
 {
-  "name": "10.minimize",
+  "name": "11.tree-sharking",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,11 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
-    "compression-webpack-plugin": "^10.0.0",
-    "css-loader": "^6.7.1",
-    "css-minimizer-webpack-plugin": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
-    "mini-css-extract-plugin": "^2.6.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   }

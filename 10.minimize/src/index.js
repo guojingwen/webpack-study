@@ -1,11 +1,12 @@
+import './style.css';
 /**
  * 测试 terserOptions.mangle: true
  * 测试 terserOptions.toplevel
  */
-function alert (arg) {
-    alert(arg);
+function myAlert (arg) {
+    console.log(arg);
 }
-alert('abc')
+myAlert('abc')
 
 /**
  * 测试 terserOptions.compress.arguments: true
