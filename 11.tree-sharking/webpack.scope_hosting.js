@@ -17,6 +17,6 @@ module.exports = {
             template: './index.html',
             title: 'webpack 代码分割 runtime',
         }),
-         ,
+        new webpack.optimize.ModuleConcatenationPlugin(),
     ]
   }

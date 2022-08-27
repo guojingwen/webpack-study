@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "sideEffects": [
+    "./src/sideEffect_abc.js"
+  ],
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --config webpack.scope_hosting.js",
+    "build:usedExports": "webpack --config webpack.usedExports.js"
   },
   "keywords": [],
   "author": "dashu",

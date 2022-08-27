@@ -33,7 +33,7 @@ module.exports = {
         minimizer: [
           new TerserPlugin({
             parallel: true, // 使用多进程并发运行以提高构建速度
-            extractComments: false, // 是否将注释丹徒
+            extractComments: false, // 是否将注释移除
             terserOptions: {
               compress: {
                 arguments: true,
