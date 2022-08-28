@@ -2,11 +2,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CssExtractPlugin = require('mini-css-extract-plugin');
+const glob = require('glob');
+const PurgeCssPlugin = require('purgecss-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
-    devtool: 'source-map',
-    entry: './src/index_usedExports.js',
+    mode: 'none',
+    entry: './src/index.js',
     output: {
         path: path.join(__dirname, './dist'),
         filename: '[name].[contenthash:6].js',
@@ -28,11 +30,34 @@ module.exports = {
             })
         ]
     },
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: [
+                    CssExtractPlugin.loader,
+                    'css-loader',
+                ],
+                sideEffects: true,
+            }
+        ]
+    },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './index.html',
-            title: 'webpack tree-sharking',
+            title: 'webpack tree-sharking-css',
+        }),
+        new CssExtractPlugin({
+            filename: "css/[name].[hash:8].css",
+        }),
+        new PurgeCssPlugin({
+            paths: glob.sync(`${path.join(__dirname, "./src")}/**/*`, {nodir: true}),
+            safelist: function() {
+                return {
+                    standard: ["html"]
+                }
+            }
         })
     ]
   }

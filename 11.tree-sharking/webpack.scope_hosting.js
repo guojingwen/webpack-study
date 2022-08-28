@@ -15,7 +15,7 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './index.html',
-            title: 'webpack 代码分割 runtime',
+            title: 'webpack scope-hosting',
         }),
         new webpack.optimize.ModuleConcatenationPlugin(),
     ]
