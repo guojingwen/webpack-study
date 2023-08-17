@@ -1,0 +1,18 @@
+{
+  "name": "13.handcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node bundle.js"
+  },
+  "keywords": [],
+  "author": "dashu",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.22.10",
+    "@babel/parser": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "@babel/traverse": "^7.22.10"
+  }
+}
